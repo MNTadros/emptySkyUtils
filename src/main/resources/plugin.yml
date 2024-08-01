@@ -1,0 +1,4 @@
+name: emptySkyUtils
+version: '${project.version}'
+main: com.empty.emptyskyutils.EmptySkyUtils
+api-version: '1.21'
