@@ -2,3 +2,8 @@ name: emptySkyUtils
 version: '${project.version}'
 main: com.empty.emptyskyutils.EmptySkyUtils
 api-version: '1.21'
+commands:
+  reloadconfig:
+    description: reloads the config
+    usage: /<command>
+    aliases: [reloadc]

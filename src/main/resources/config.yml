@@ -1,0 +1,16 @@
+spawnerShards: true
+sendSpawnerMessage: false
+mobSpawnerShards:
+  rabbit: true
+  rabbitpercent: 1.0
+  chicken: true
+  chickenpercent: 1.0
+  cow: true
+  cowpercent: 1.0
+  spider: true
+  spiderpercent: 1.0
+  zombie: true
+  zombiepercent: 1.0
+  skeleton: true
+  skeletonpercent: 0.25
+
