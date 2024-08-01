@@ -11,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.BlockStateMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class craftShardsToSpawners {
 
@@ -36,9 +35,8 @@ public class craftShardsToSpawners {
         CreatureSpawner creatureSpawner = (CreatureSpawner) meta.getBlockState();
         creatureSpawner.setSpawnedType(entityType);
         meta.setBlockState(creatureSpawner);
-        meta.setDisplayName(entityName + " Spawner");
+        meta.setDisplayName("§f§lMob Spawner (§7" + entityName.toUpperCase() + "§f§l)");
         spawner.setItemMeta(meta);
-
         NamespacedKey key = new NamespacedKey(plugin, entityName.toLowerCase() + "_spawner");
         ShapedRecipe recipe = new ShapedRecipe(key, spawner);
         recipe.shape("SSS", "SSS", "SSS");
