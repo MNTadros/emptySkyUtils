@@ -3,7 +3,10 @@ version: '${project.version}'
 main: com.empty.emptyskyutils.EmptySkyUtils
 api-version: '1.21'
 commands:
-  reloadconfig:
+  emptySkyUtilsreload:
     description: reloads the config
     usage: /<command>
-    aliases: [reloadc]
+    aliases: [skyreload ,skyutilsreload]
+  emptySkyUtils:
+    aliases: [ esu ,skyutils ]
+  giveshards:

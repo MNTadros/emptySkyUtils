@@ -1,4 +1,5 @@
 spawnerShards: true
+enchantShards: true
 sendSpawnerMessage: false
 mobSpawnerShards:
   rabbit: true
