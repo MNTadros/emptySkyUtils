@@ -1,4 +1,4 @@
-# emptySkyUtils [1.21 Spigot]
+# emptySkyUtils [1.21 Paper / Spigot]
 
 This plugin was made for the purpose of a skyblock server where you get rewarded for grinding mobs / farming. It was focused on configurability!
 
