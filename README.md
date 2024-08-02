@@ -48,6 +48,10 @@ Current spawnerShards:
 ## Config
 
 ```bash
+# true = feature enabled
+# false = feature disabled
+# 1.00 = 100% drop chance, 0.50 = 50% drop chance (a drop chance from 0.01-0.05 is recommended)
+
 spawnerShards: true
 enchantShards: true
 sendEnchantMessage: false
