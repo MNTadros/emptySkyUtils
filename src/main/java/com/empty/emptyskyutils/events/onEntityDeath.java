@@ -50,7 +50,7 @@ public class onEntityDeath implements Listener {
                 if (new Random().nextDouble() <= dropChance) {
                     ((Player) killerEntity).getInventory().addItem(shardMap.get(entity));
                     if (plugin.getConfig().getBoolean("sendSpawnerMessage")) {
-                        killerEntity.sendMessage("You have received a " + entity.name() + " Spawner Shard!");
+                        killerEntity.sendMessage("§f§l[§bempty§7SkyUtils§f§l] You have received a " + entity.name() + " Spawner Shard!");
                     }
                 }
             }
