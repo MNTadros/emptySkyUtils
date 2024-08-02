@@ -10,3 +10,5 @@ commands:
   emptySkyUtils:
     aliases: [ esu ,skyutils ]
   giveshards:
+    description: admin command to give enchantShards
+

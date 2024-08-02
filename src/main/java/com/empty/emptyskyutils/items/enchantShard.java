@@ -18,6 +18,8 @@ public class enchantShard {
     public static ItemStack smiteShard;
     public static ItemStack unbreakingShard;
     public static ItemStack baneShard;
+    public static ItemStack protectionShard;
+    public static ItemStack efficiencyShard;
 
     public static void init() {
         lootingShard = createEnchantShard("Looting");
@@ -26,6 +28,9 @@ public class enchantShard {
         smiteShard = createEnchantShard("Smite");
         unbreakingShard = createEnchantShard("Unbreaking");
         baneShard = createEnchantShard("Bane_of_arthropods");
+        protectionShard = createEnchantShard("Protection");
+        efficiencyShard = createEnchantShard("Efficiency");
+
     }
 
     private static ItemStack createEnchantShard(String enchant) {

@@ -36,6 +36,8 @@ public class skyUtils implements CommandExecutor {
             ((Player) sender).getInventory().addItem(enchantShard.smiteShard);
             ((Player) sender).getInventory().addItem(enchantShard.unbreakingShard);
             ((Player) sender).getInventory().addItem(enchantShard.baneShard);
+            ((Player) sender).getInventory().addItem(enchantShard.protectionShard);
+            ((Player) sender).getInventory().addItem(enchantShard.efficiencyShard);
             return true;
         }
 
