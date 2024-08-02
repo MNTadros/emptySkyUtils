@@ -47,7 +47,7 @@ Current spawnerShards:
 
 ## Config
 
-'''
+```bash
 spawnerShards: true
 enchantShards: true
 sendEnchantMessage: false
@@ -65,7 +65,7 @@ zombie: true
 zombiepercent: 0.20
 skeleton: true
 skeletonpercent: 0.10
-'''
+```
 
 ## Contributing
 
