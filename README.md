@@ -1,4 +1,4 @@
-# emptySkyUtils [1.21 Spigot]
+# emptySkyUtils [1.21 Paper / Spigot]
 
 This plugin was made for the purpose of a skyblock server where you get rewarded for grinding mobs / farming. It was focused on configurability!
 
@@ -48,6 +48,10 @@ Current spawnerShards:
 ## Config
 
 ```bash
+# true = feature enabled
+# false = feature disabled
+# 1.00 = 100% drop chance, 0.50 = 50% drop chance (a drop chance from 0.01-0.05 is recommended)
+
 spawnerShards: true
 enchantShards: true
 sendEnchantMessage: false
