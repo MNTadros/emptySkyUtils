@@ -14,11 +14,11 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.Random;
 
-public class onEntityDeath implements Listener {
+public class shardEntityDeath implements Listener {
 
     private EmptySkyUtils plugin;
 
-    public onEntityDeath(EmptySkyUtils plugin) {
+    public shardEntityDeath(EmptySkyUtils plugin) {
         this.plugin = plugin;
     }
 

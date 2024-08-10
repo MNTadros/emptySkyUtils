@@ -2,6 +2,7 @@ package com.empty.emptyskyutils.commands;
 
 import com.empty.emptyskyutils.EmptySkyUtils;
 import com.empty.emptyskyutils.items.enchantShard;
+import com.empty.emptyskyutils.items.mobBox;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,6 +39,19 @@ public class skyUtils implements CommandExecutor {
             ((Player) sender).getInventory().addItem(enchantShard.baneShard);
             ((Player) sender).getInventory().addItem(enchantShard.protectionShard);
             ((Player) sender).getInventory().addItem(enchantShard.efficiencyShard);
+            return true;
+        }
+
+        if (command.getName().equalsIgnoreCase("giveboxes")) {
+            sender.sendMessage("§f§l[§bempty§7SkyUtils§f§l] All MobBoxes given!");
+            ((Player) sender).getInventory().addItem(mobBox.tier1mobBox);
+            ((Player) sender).getInventory().addItem(mobBox.tier2mobBox);
+            ((Player) sender).getInventory().addItem(mobBox.tier3mobBox);
+            ((Player) sender).getInventory().addItem(mobBox.tier4mobBox);
+            ((Player) sender).getInventory().addItem(mobBox.tier5mobBox);
+            ((Player) sender).getInventory().addItem(mobBox.tier6mobBox);
+            ((Player) sender).getInventory().addItem(mobBox.resourcemobBox);
+            ((Player) sender).getInventory().addItem(mobBox.bossmobBox);
             return true;
         }
 

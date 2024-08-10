@@ -11,4 +11,6 @@ commands:
     aliases: [ esu ,skyutils ]
   giveshards:
     description: admin command to give enchantShards
+  giveboxes:
+    description: admin command to give mobBoxes
 
