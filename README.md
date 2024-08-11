@@ -5,7 +5,9 @@ This plugin was made for the purpose of a skyblock server where you get rewarded
 ### EmptySkyUtils features:
 - enchantShards (more than max level enchants)
 
-- spawnerShards (give a reason to grind spawners)
+- spawnerShards (give a reason to grind spawners (p.s: it's MORE SPAWNERS!) )
+
+- mobBoxes (give a reason to grind spawners (this time it's not spawners, its items!) )
 
 - MORE TO COME SOON!
 
