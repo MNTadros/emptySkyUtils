@@ -25,6 +25,7 @@ public class skyUtils implements CommandExecutor {
 
         if (command.getName().equalsIgnoreCase("emptyskyUtilsreload")) {
             plugin.reloadConfig();
+            plugin.loadMobBoxConfig(); // Reload mobBoxes.yml
             sender.sendMessage("§f§l[§bempty§7SkyUtils§f§l] Configuration reloaded!");
             return true;
         }

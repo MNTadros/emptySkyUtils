@@ -3,27 +3,8 @@
 # 1.00 = 100% drop chance, 0.50 = 50% drop chance (a drop chance from 0.01-0.05 is recommended)
 spawnerShards: true
 enchantShards: true
-mobBoxes: true
 sendEnchantMessage: false
 sendSpawnerMessage: false
-sendMobBoxMessage: false
-mobBoxDrops:
-  tier1: 0.60
-  tier1name: "&7Common2"
-  tier2: 0.60
-  tier2name:
-  tier3: 0.60
-  tier3name:
-  tier4: 0.60
-  tier4name:
-  tier5: 0.60
-  tier5name:
-  tier6: 0.60
-  tier6name:
-  resource: 0.60
-  resourcename:
-  boss: 0.60
-  bossname:
 mobSpawnerShards:
   rabbit: true
   rabbitpercent: 0.60

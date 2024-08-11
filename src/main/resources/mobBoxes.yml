@@ -1,0 +1,45 @@
+mobBoxes: true
+sendMobBoxMessage: false
+mobBoxDrops:
+  tier1:
+    enabled: true
+    chance: 0.90
+    entities:
+      - RABBIT
+      - CHICKEN
+      - DROWNED
+  tier2:
+    enabled: true
+    chance: 0.10
+    entities:
+      - COW
+  tier3:
+    enabled: true
+    chance: 0.10
+    entities:
+      - SPIDER
+  tier4:
+    enabled: true
+    chance: 0.10
+    entities:
+      - ZOMBIE
+  tier5:
+    enabled: true
+    chance: 0.10
+    entities:
+      - SKELETON
+  tier6:
+    enabled: true
+    chance: 0.60
+    entities:
+      - ZOMBIFIED_PIGLIN
+  resource:
+    enabled: true
+    chance: 0.60
+    entities:
+      - MOOSHROOM
+  boss:
+    enabled: true
+    chance: 0.60
+    entities:
+      - WITHER
