@@ -125,7 +125,7 @@ public class mobBoxEvents implements Listener {
                 for (ItemStack item : itemsToGive) {
                     player.getInventory().addItem(item);
                     logger.info("Given items to player: " + itemsToGive);
-                    player.sendMessage("§f§l[§bempty§7SkyUtils§f§l] You have recieved §b" + item.getAmount() + " " + item.getType().toString().replaceAll("_"," ") + " §f§lfrom your §f§l" + tier + " MobBox!");
+                    player.sendMessage("§f§l[§bempty§7SkyUtils§f§l] You have recieved §b" + item.getAmount() + " " + item.getType().toString().replaceAll("_"," ") + " §f§lfrom your §f§l" + tier.toUpperCase() + " MobBox!");
                 }
             }
 
