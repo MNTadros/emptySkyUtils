@@ -45,17 +45,30 @@ mobBoxDrops:
       - WITHER
 
 mobBoxLootTable:
-  tier1:
+  tier1: # Common
     items:
       item1:
-        material: DIAMOND
-        amount: 1
-        chance: 0.5
-      item2:
         material: IRON_INGOT
         amount: 3
+        chance: 0.5
+      item2:
+        material: COAL
+        amount: 5
+        chance: 0.7
+      item3:
+        material: STONE_SWORD
+        amount: 1
+        chance: 0.4
+      item4:
+        material: LEATHER_HELMET
+        amount: 1
         chance: 0.3
-  tier2:
+      item5:
+        material: WOODEN_PICKAXE
+        amount: 1
+        chance: 0.6
+
+  tier2: # Uncommon
     items:
       item1:
         material: GOLD_INGOT
@@ -63,5 +76,155 @@ mobBoxLootTable:
         chance: 0.4
       item2:
         material: EMERALD
+        amount: 1
+        chance: 0.3
+      item3:
+        material: IRON_SWORD
+        amount: 1
+        chance: 0.4
+      item4:
+        material: LEATHER_CHESTPLATE
+        amount: 1
+        chance: 0.3
+      item5:
+        material: LAPIS_LAZULI
+        amount: 5
+        chance: 0.5
+
+  tier3: # Elite
+    items:
+      item1:
+        material: DIAMOND
+        amount: 1
+        chance: 0.3
+      item2:
+        material: IRON_INGOT
+        amount: 5
+        chance: 0.5
+      item3:
+        material: BOW
+        amount: 1
+        chance: 0.3
+      item4:
+        material: GOLDEN_APPLE
+        amount: 1
+        chance: 0.2
+      item5:
+        material: CHAINMAIL_LEGGINGS
+        amount: 1
+        chance: 0.4
+
+  tier4: # Rare
+    items:
+      item1:
+        material: DIAMOND
+        amount: 2
+        chance: 0.4
+      item2:
+        material: ENDER_PEARL
+        amount: 3
+        chance: 0.3
+      item3:
+        material: ENCHANTED_BOOK
+        amount: 1
+        chance: 0.2
+      item4:
+        material: GOLDEN_APPLE
+        amount: 2
+        chance: 0.3
+      item5:
+        material: IRON_CHESTPLATE
+        amount: 1
+        chance: 0.3
+
+  tier5: # Legendary
+    items:
+      item1:
+        material: DIAMOND
+        amount: 3
+        chance: 0.3
+      item2:
+        material: NETHERITE_SCRAP
+        amount: 1
+        chance: 0.2
+      item3:
+        material: TOTEM_OF_UNDYING
+        amount: 1
+        chance: 0.1
+      item4:
+        material: DIAMOND_SWORD
+        amount: 1
+        chance: 0.3
+      item5:
+        material: ENCHANTED_GOLDEN_APPLE
+        amount: 1
+        chance: 0.1
+
+  tier6: # Mythic
+    items:
+      item1:
+        material: NETHERITE_INGOT
+        amount: 1
+        chance: 0.2
+      item2:
+        material: DRAGON_HEAD
+        amount: 1
+        chance: 0.1
+      item3:
+        material: ELYTRA
+        amount: 1
+        chance: 0.05
+      item4:
+        material: BEACON
+        amount: 1
+        chance: 0.15
+      item5:
+        material: DIAMOND_BLOCK
+        amount: 1
+        chance: 0.3
+
+  resource: # Resource Mob Box
+    items:
+      item1:
+        material: COAL_BLOCK
+        amount: 5
+        chance: 0.6
+      item2:
+        material: IRON_BLOCK
+        amount: 3
+        chance: 0.4
+      item3:
+        material: REDSTONE_BLOCK
+        amount: 5
+        chance: 0.5
+      item4:
+        material: LAPIS_BLOCK
+        amount: 2
+        chance: 0.3
+      item5:
+        material: GOLD_BLOCK
+        amount: 2
+        chance: 0.2
+
+  boss: # Boss Mob Box
+    items:
+      item1:
+        material: NETHER_STAR
+        amount: 1
+        chance: 0.15
+      item2:
+        material: WITHER_SKELETON_SKULL
+        amount: 1
+        chance: 0.2
+      item3:
+        material: SHULKER_BOX
+        amount: 1
+        chance: 0.3
+      item4:
+        material: DRAGON_EGG
+        amount: 1
+        chance: 0.05
+      item5:
+        material: TOTEM_OF_UNDYING
         amount: 1
         chance: 0.2

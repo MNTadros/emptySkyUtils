@@ -45,30 +45,95 @@ Current spawnerShards:
 - Zombie
 - Skeleton
 
-## Config
+### MobBoxes
 
+![img.png](imgs/img.png)
+![img_1.png](imgs/img_1.png)
+![img_2.png](imgs/img_2.png)
+
+There are 8 types of MobBoxes by default, these are toggleable and fully configurable!
+
+- Tier 1 (Common): Basic items like iron ingots, coal, and low-level tools and armor.
+- Tier 2 (Uncommon): Slightly better items, including gold ingots, emeralds, and iron gear.
+- Tier 3 (Elite): Higher chances of getting diamonds, enchanted items, and better equipment.
+- Tier 4 (Rare): Valuable items like diamonds, enchanted books, and higher-tier armor.
+- Tier 5 (Legendary): Rare and powerful items like netherite scrap, totems, and enchanted golden apples.
+- Tier 6 (Mythic): Very rare items, including netherite ingots, elytra, and beacons.
+- Resource Mob Box: Focused on resource blocks like coal, iron, redstone, lapis, and gold.
+- Boss Mob Box: Contains unique and powerful items like the Nether Star, Wither Skeleton Skull, and Dragon Egg.
+
+## Configs
+
+config.yml:
 ```bash
+#config.yml
 # true = feature enabled
 # false = feature disabled
 # 1.00 = 100% drop chance, 0.50 = 50% drop chance (a drop chance from 0.01-0.05 is recommended)
-
 spawnerShards: true
 enchantShards: true
 sendEnchantMessage: false
 sendSpawnerMessage: false
 mobSpawnerShards:
-rabbit: true
-rabbitpercent: 0.60
-chicken: true
-chickenpercent: 0.50
-cow: true
-cowpercent: 0.40
-spider: true
-spiderpercent: 0.30
-zombie: true
-zombiepercent: 0.20
-skeleton: true
-skeletonpercent: 0.10
+  rabbit: true
+  rabbitpercent: 0.60
+  chicken: true
+  chickenpercent: 0.50
+  cow: true
+  cowpercent: 0.40
+  spider: true
+  spiderpercent: 0.30
+  zombie: true
+  zombiepercent: 0.20
+  skeleton: true
+  skeletonpercent: 0.10
+```
+
+mobBoxes.yml:
+```bash
+# mobBoxes.yml
+mobBoxes: true
+sendMobBoxMessage: false
+mobBoxDrops:
+  tier1:
+    enabled: true
+    chance: 0.9
+    entities: [RABBIT, CHICKEN, DROWNED]
+  tier2:
+    enabled: true
+    chance: 0.1
+    entities: [COW]
+  tier3:
+    enabled: true
+    chance: 0.1
+    entities: [SPIDER]
+  tier4:
+    enabled: true
+    chance: 0.1
+    entities: [ZOMBIE]
+  tier5:
+    enabled: true
+    chance: 0.1
+    entities: [SKELETON]
+  tier6:
+    enabled: true
+    chance: 0.6
+    entities: [ZOMBIFIED_PIGLIN]
+  resource:
+    enabled: true
+    chance: 0.6
+    entities: [MOOSHROOM]
+  boss:
+    enabled: true
+    chance: 0.6
+    entities: [WITHER]
+
+mobBoxLootTable:
+  tier1:
+    items:
+      item1: { material: IRON_INGOT, amount: 3, chance: 0.5 }
+      item2: { material: COAL, amount: 5, chance: 0.7 }
+      item3: { material: STONE_SWORD, amount: 1, chance: 0.4 }
 ```
 
 ## Contributing
