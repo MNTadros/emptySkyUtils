@@ -43,3 +43,25 @@ mobBoxDrops:
     chance: 0.60
     entities:
       - WITHER
+
+mobBoxLootTable:
+  tier1:
+    items:
+      item1:
+        material: DIAMOND
+        amount: 1
+        chance: 0.5
+      item2:
+        material: IRON_INGOT
+        amount: 3
+        chance: 0.3
+  tier2:
+    items:
+      item1:
+        material: GOLD_INGOT
+        amount: 2
+        chance: 0.4
+      item2:
+        material: EMERALD
+        amount: 1
+        chance: 0.2
