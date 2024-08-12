@@ -23,6 +23,11 @@ public class skyUtils implements CommandExecutor {
             return false;
         }
 
+        if (!sender.hasPermission("emptyskyutils.admin")) {
+            sender.sendMessage("§cYou do not have permission to use this command.");
+            return true;
+        }
+
         if (args.length == 0) {
             sender.sendMessage("§f[§bempty§7SkyUtils§f] Available commands:");
             sender.sendMessage("§7/esu reload");
