@@ -1,48 +1,64 @@
 mobBoxes: true
 sendMobBoxMessage: false
 mobBoxDrops:
-  tier1:
-    enabled: true
-    chance: 0.90
-    entities:
-      - RABBIT
-      - CHICKEN
-      - DROWNED
-  tier2:
-    enabled: true
-    chance: 0.10
-    entities:
-      - COW
-  tier3:
-    enabled: true
-    chance: 0.10
-    entities:
-      - SPIDER
-  tier4:
-    enabled: true
-    chance: 0.10
-    entities:
-      - ZOMBIE
-  tier5:
-    enabled: true
-    chance: 0.10
-    entities:
-      - SKELETON
-  tier6:
-    enabled: true
-    chance: 0.60
-    entities:
-      - ZOMBIFIED_PIGLIN
-  resource:
-    enabled: true
-    chance: 0.60
-    entities:
-      - MOOSHROOM
-  boss:
-    enabled: true
-    chance: 0.60
-    entities:
-      - WITHER
+tier1:
+  enabled: true
+  chance: 0.20
+  entities:
+    - RABBIT
+    - CHICKEN
+    - PIG
+    - SHEEP
+tier2:
+  enabled: true
+  chance: 0.10
+  entities:
+    - COW
+    - HORSE
+    - DONKEY
+tier3:
+  enabled: true
+  chance: 0.08
+  entities:
+    - SPIDER
+    - CAVE_SPIDER
+    - WITCH
+tier4:
+  enabled: true
+  chance: 0.05
+  entities:
+    - DROWNED
+    - ZOMBIE
+    - HUSK
+    - STRAY
+tier5:
+  enabled: true
+  chance: 0.05
+  entities:
+    - SKELETON
+    - WITHER_SKELETON
+    - PHANTOM
+tier6:
+  enabled: true
+  chance: 0.05
+  entities:
+    - ZOMBIFIED_PIGLIN
+    - PIGLIN
+    - HOGLIN
+resource:
+  enabled: true
+  chance: 0.10
+  entities:
+    - MOOSHROOM
+    - PARROT
+    - OCELOT
+boss:
+  enabled: true
+  chance: 0.90
+  entities:
+    - WITHER
+    - ENDER_DRAGON
+    - ELDER_GUARDIAN
 
 mobBoxLootTable:
   tier1: # Common

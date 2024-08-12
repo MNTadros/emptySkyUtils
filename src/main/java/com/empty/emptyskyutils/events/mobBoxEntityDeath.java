@@ -39,7 +39,7 @@ public class mobBoxEntityDeath implements Listener {
 
             String tier = getMobBoxTier(entityType);
             if (tier == null) {
-                logger.info("No mob box configuration found for entity " + entityType.name());
+//                logger.info("No mob box configuration found for entity " + entityType.name());
                 return;
             }
 

@@ -2,15 +2,15 @@ name: emptySkyUtils
 version: '${project.version}'
 main: com.empty.emptyskyutils.EmptySkyUtils
 api-version: '1.21'
+description: 'A plugin that provides various rewards and utility items for Skyblock styled servers.'
+author: 'empty'
 commands:
-  emptySkyUtilsreload:
-    description: reloads the config
-    usage: /<command>
-    aliases: [skyreload ,skyutilsreload]
-  emptySkyUtils:
-    aliases: [ esu ,skyutils ]
-  giveshards:
-    description: admin command to give enchantShards
-  giveboxes:
-    description: admin command to give mobBoxes
+  emptyskyutils:
+    description: 'Main command for EmptySkyUtils'
+    usage: '/<command> [subcommand] [arguments]'
+    aliases: [esu, skyutils]
+permissions:
+  emptyskyutils.admin:
+    description: 'Allows the user to access admin commands'
+    default: op
 

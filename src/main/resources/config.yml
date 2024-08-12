@@ -7,14 +7,14 @@ sendEnchantMessage: false
 sendSpawnerMessage: false
 mobSpawnerShards:
   rabbit: true
-  rabbitpercent: 0.60
+  rabbitpercent: 0.20
   chicken: true
-  chickenpercent: 0.50
+  chickenpercent: 0.15
   cow: true
-  cowpercent: 0.40
+  cowpercent: 0.10
   spider: true
-  spiderpercent: 0.30
+  spiderpercent: 0.08
   zombie: true
-  zombiepercent: 0.20
+  zombiepercent: 0.08
   skeleton: true
-  skeletonpercent: 0.10
+  skeletonpercent: 0.08

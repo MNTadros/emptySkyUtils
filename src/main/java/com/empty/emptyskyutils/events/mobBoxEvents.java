@@ -31,7 +31,6 @@ public class mobBoxEvents implements Listener {
         this.plugin = plugin;
         this.logger = plugin.getLogger();
         this.unluckyCoal = createUnlucky(Material.COAL);
-        this.logger.info("mobBoxEvents initialized successfully.");
     }
 
     private static ItemStack createUnlucky(Material material) {
@@ -53,7 +52,7 @@ public class mobBoxEvents implements Listener {
         if (isMobBox(itemInHand)) {
             event.setCancelled(true);
             event.getPlayer().sendMessage("§f§l[§bempty§7SkyUtils§f§l] You can't place a MobBox!");
-            logger.info("Attempted to place a Mob Box and it was cancelled.");
+//            logger.info("Attempted to place a Mob Box and it was cancelled.");
             event.getPlayer().getInventory().setItemInMainHand(itemInHand);
             plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                 event.getPlayer().updateInventory();
@@ -79,25 +78,25 @@ public class mobBoxEvents implements Listener {
             String tier = getTierFromDisplayName(displayName);
 
             if (tier == null) {
-                logger.warning("Invalid mob box tier: " + displayName);
+//                logger.warning("Invalid mob box tier: " + displayName);
                 return;
             }
 
             FileConfiguration mobBoxConfig = plugin.getMobBoxConfig();
             if (mobBoxConfig == null) {
-                logger.severe("mobBoxConfig is null. Check if the configuration file is loaded correctly.");
+//                logger.severe("mobBoxConfig is null. Check if the configuration file is loaded correctly.");
                 return;
             }
 
             ConfigurationSection lootTableSection = mobBoxConfig.getConfigurationSection("mobBoxLootTable." + tier);
             if (lootTableSection == null) {
-                logger.warning("No loot table found for tier: " + tier);
+//                logger.warning("No loot table found for tier: " + tier);
                 return;
             }
 
             ConfigurationSection itemsSection = lootTableSection.getConfigurationSection("items");
             if (itemsSection == null) {
-                logger.warning("No items section found for tier: " + tier);
+//                logger.warning("No items section found for tier: " + tier);
                 return;
             }
             List<ItemStack> itemsToGive = new ArrayList<>();
@@ -110,21 +109,21 @@ public class mobBoxEvents implements Listener {
                     if (random.nextDouble() <= chance) {
                         ItemStack item = new ItemStack(material, amount);
                         itemsToGive.add(item);
-                        logger.info("Item rolled: " + item.getType() + " with chance: " + chance);
+//                        logger.info("Item rolled: " + item.getType() + " with chance: " + chance);
                     }
                 } else {
-                    logger.warning("Invalid material in config: " + itemsSection.getString(key + ".material"));
+//                    logger.warning("Invalid material in config: " + itemsSection.getString(key + ".material"));
                 }
             }
 
             if (itemsToGive.isEmpty()) {
-                logger.info("No items rolled for tier: " + tier);
+//                logger.info("No items rolled for tier: " + tier);
                 player.sendMessage("§f§l[§bempty§7SkyUtils§f§l] You have recieved the remnants of your MobBox!");
                 player.getInventory().addItem(unluckyCoal);
             } else {
                 for (ItemStack item : itemsToGive) {
                     player.getInventory().addItem(item);
-                    logger.info("Given items to player: " + itemsToGive);
+//                    logger.info("Given items to player: " + itemsToGive);
                     player.sendMessage("§f§l[§bempty§7SkyUtils§f§l] You have recieved §b" + item.getAmount() + " " + item.getType().toString().replaceAll("_"," ") + " §f§lfrom your §f§l" + tier.toUpperCase() + " MobBox!");
                 }
             }
@@ -163,6 +162,6 @@ public class mobBoxEvents implements Listener {
         } else {
             player.getInventory().remove(mobBoxItem);
         }
-        logger.info("Removed one mob box from player inventory.");
+//        logger.info("Removed one mob box from player inventory.");
     }
 }
