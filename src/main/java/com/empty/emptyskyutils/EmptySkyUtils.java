@@ -31,10 +31,7 @@ public final class EmptySkyUtils extends JavaPlugin {
         mobBox.init();
         craftShardsToSpawners craftShardsToSpawners = new craftShardsToSpawners(this);
         craftShardsToSpawners.registerRecipes();
-        this.getCommand("emptyskyUtilsreload").setExecutor(new skyUtils(this));
         this.getCommand("emptySkyUtils").setExecutor(new skyUtils(this));
-        this.getCommand("giveshards").setExecutor(new skyUtils(this));
-        this.getCommand("giveboxes").setExecutor(new skyUtils(this));
         Bukkit.getPluginManager().registerEvents(new mobBoxEntityDeath(this), this);
         Bukkit.getPluginManager().registerEvents(new shardEntityDeath(this), this);
         Bukkit.getPluginManager().registerEvents(new enchantShardApplication(this), this);
