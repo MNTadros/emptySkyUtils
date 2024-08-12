@@ -63,30 +63,29 @@ There are 8 types of MobBoxes by default, these are toggleable and fully configu
 - Tier 6 (Mythic): Very rare items, including netherite ingots, elytra, and beacons.
 - Resource Mob Box: Focused on resource blocks like coal, iron, redstone, lapis, and gold.
 - Boss Mob Box: Contains unique and powerful items like the Nether Star, Wither Skeleton Skull, and Dragon Egg.
-- 
+
 ## Commands
-  ### /esu reload
-  Description: Reloads the plugin configuration files.
-  Permissions: emptyskyutils.admin
-  Usage: /esu reload
 
- ### /esu giveshards <player> <amount> [type]
-Description: Gives enchant shards to a player. If no type is specified, gives all shard types.
-Permissions: emptyskyutils.admin
-Arguments:
+### `/esu reload`
+- **Description:** Reloads the plugin configuration files.
+- **Permissions:** `emptyskyutils.admin`
+- **Usage:** `/esu reload`
 
-<player>: The name of the player to receive the shards.
-<amount>: The number of shards to give.
-[type]: The specific type of shard (optional).
+### `/esu giveshards <player> <amount> [type]`
+- **Description:** Gives enchant shards to a player. If no type is specified, all shard types are given.
+- **Permissions:** `emptyskyutils.admin`
+- **Arguments:**
+  - `<player>`: The name of the player to receive the shards.
+  - `<amount>`: The number of shards to give.
+  - `[type]`: The specific type of shard (optional).
 
- ### /esu giveboxes <player> <amount> [type]
-Description: Gives MobBoxes to a player. If no type is specified, gives all box types.
-Permissions: emptyskyutils.admin
-Arguments:
-
-<player>: The name of the player to receive the boxes.
-<amount>: The number of boxes to give.
-[type]: The specific type of box (optional).
+### `/esu giveboxes <player> <amount> [type]`
+- **Description:** Gives MobBoxes to a player. If no type is specified, all box types are given.
+- **Permissions:** `emptyskyutils.admin`
+- **Arguments:**
+  - `<player>`: The name of the player to receive the boxes.
+  - `<amount>`: The number of boxes to give.
+  - `[type]`: The specific type of box (optional).
 
 ## Configs
 
