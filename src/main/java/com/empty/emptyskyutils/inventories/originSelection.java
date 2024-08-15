@@ -17,49 +17,37 @@ public class originSelection implements InventoryHolder {
 
     public originSelection(EmptySkyUtils plugin){
         this.plugin = plugin;
-        origininv = Bukkit.createInventory(this,54,"§6§Origin Selection");
-        setOuterLayer(origininv, Material.WHITE_STAINED_GLASS_PANE);
+        origininv = Bukkit.createInventory(this,54,"§6Origin Selection");
         init();
         initSelection();
     }
 
-    public void setOuterLayer(Inventory inventory, Material material) {
-        int rows = 6;
-        int columns = 9;
-
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < columns; col++) {
-                if (row == 0 || row == rows - 1 || col == 0 || col == columns - 1) {
-                    int slot = row * columns + col;
-                    inventory.setItem(slot, new ItemStack(material));
-                }
-            }
-        }
-    }
-
     private void init(){
         ItemStack item;
-        //left
-        for (int i = 0; i < 10;i++){
-            item = createItem("§7", Material.LIME_STAINED_GLASS,null);
-            origininv.setItem(i,item);
+        for (int i = 0; i < 9; i++) {
+            item = createItem("§7", Material.LIME_STAINED_GLASS, null);
+            origininv.setItem(i, item);
+            origininv.setItem(45 + i, item); // last row
         }
-        item = createItem("§7", Material.LIME_STAINED_GLASS,null);
-        origininv.setItem(17,item);
-        origininv.setItem(11,item);
-        origininv.setItem(13,item);
-        origininv.setItem(15,item);
-
-
-        for (int i = 18; i < 27;i++){
-            item = createItem("§7", Material.LIME_STAINED_GLASS,null);
-            origininv.setItem(i,item);
+        for (int i = 9; i < 18; i++) {
+            item = createItem("§7", Material.LIME_STAINED_GLASS, null);
+            origininv.setItem(i, item);
         }
+        for (int i = 27; i < 45; i++) {
+            item = createItem("§7", Material.LIME_STAINED_GLASS, null);
+            origininv.setItem(i, item);
+        }
+        origininv.setItem(36, createItem("§7", Material.LIME_STAINED_GLASS, null));
+        origininv.setItem(18, createItem("§7", Material.LIME_STAINED_GLASS, null));
+        origininv.setItem(20, createItem("§7", Material.LIME_STAINED_GLASS, null));
+        origininv.setItem(22, createItem("§7", Material.LIME_STAINED_GLASS, null));
+        origininv.setItem(24, createItem("§7", Material.LIME_STAINED_GLASS, null));
+        origininv.setItem(26, createItem("§7", Material.LIME_STAINED_GLASS, null));
+
         List<String> lore = new ArrayList<>();
         lore.add("§cClick this to close the selection");
-        item = createItem("§c§lClose selection", Material.BARRIER,lore);
-        origininv.setItem(22,item);
-
+        ItemStack closeItem = createItem("§c§lClose selection", Material.BARRIER, lore);
+        origininv.setItem(49, closeItem);
     }
 
     void initSelection(){
@@ -73,7 +61,7 @@ public class originSelection implements InventoryHolder {
         slot1lore.add("§2► §fPermanent Haste 2");
 
         slot1 = createItem("§2§lFarmer Origin", Material.WHEAT, slot1lore);
-        origininv.setItem(10, slot1);
+        origininv.setItem(19, slot1);
 
         ItemStack slot2;
         List<String> slot2lore = new ArrayList<>();
@@ -85,7 +73,7 @@ public class originSelection implements InventoryHolder {
         slot2lore.add("§b► §fExclusive §n/cave warp");
 
         slot2 = createItem("§b§lMiner Origin", Material.DIAMOND_PICKAXE, slot2lore);
-        origininv.setItem(12, slot2);
+        origininv.setItem(21, slot2);
 
         ItemStack slot3;
         List<String> slot3lore = new ArrayList<>();
@@ -97,7 +85,7 @@ public class originSelection implements InventoryHolder {
         slot3lore.add("§e► §fExclusive §n/auction warp");
 
         slot3 = createItem("§e§lTrader Origin", Material.EMERALD, slot3lore);
-        origininv.setItem(14, slot3);
+        origininv.setItem(23, slot3);
 
         ItemStack slot4;
         List<String> slot4lore = new ArrayList<>();
@@ -109,9 +97,8 @@ public class originSelection implements InventoryHolder {
         slot4lore.add("§d► §fPermanent Luck 2");
 
         slot4 = createItem("§d§lRancher Origin", Material.CARROT, slot4lore);
-        origininv.setItem(16, slot4);
+        origininv.setItem(25, slot4);
     }
-
 
     private ItemStack createItem(String name, Material mat, List<String> lore){
         ItemStack item = new ItemStack(mat,1);
@@ -121,6 +108,7 @@ public class originSelection implements InventoryHolder {
         item.setItemMeta(meta);
         return item;
     }
+
     @Override
     public Inventory getInventory() {
         return origininv;
