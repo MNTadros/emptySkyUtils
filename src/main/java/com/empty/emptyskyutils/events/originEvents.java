@@ -176,7 +176,7 @@ public class originEvents implements Listener {
                         data.resetCooldown();
                         originEventsUtils.applyPhoenixEffects(player);
                     } else {
-                        player.sendMessage("§c§lYour Phoenix ability is on cooldown!");
+                        player.sendMessage("§cYour §c§lPHOENIX§c ability is on cooldown!");
                         player.sendTitle("§c§lCooldown!", "§b§lPHOENIX ability is not ready yet!", 10, 70, 20);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§c§lPHOENIX ability is on cooldown!"));
                     }
