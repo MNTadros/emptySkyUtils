@@ -4,4 +4,5 @@ public enum effectType {
     PERMANENT_HASTE,
     MINING_SPEED,
     PERMANENT_LUCK,
+    PHOENIX
 }
