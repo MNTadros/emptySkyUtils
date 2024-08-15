@@ -5,9 +5,9 @@ This plugin was made for the purpose of a skyblock server where you get rewarded
 ### EmptySkyUtils features:
 - enchantShards (more than max level enchants)
 
-- spawnerShards (give a reason to grind spawners (p.s: it's MORE SPAWNERS!) )
+- spawnerShards (give a reason to grind spawners (p.s: it's MORE SPAWNERS!))
 
-- mobBoxes (give a reason to grind spawners (this time it's not spawners, its items!) )
+- mobBoxes (give a reason to grind spawners (this time it's not spawners, its items!))
 
 - More to Come Soon!
 
@@ -101,17 +101,17 @@ sendEnchantMessage: false
 sendSpawnerMessage: false
 mobSpawnerShards:
   rabbit: true
-  rabbitpercent: 0.60
+  rabbitpercent: 0.20
   chicken: true
-  chickenpercent: 0.50
+  chickenpercent: 0.15
   cow: true
-  cowpercent: 0.40
+  cowpercent: 0.10
   spider: true
-  spiderpercent: 0.30
+  spiderpercent: 0.08
   zombie: true
-  zombiepercent: 0.20
+  zombiepercent: 0.08
   skeleton: true
-  skeletonpercent: 0.10
+  skeletonpercent: 0.08
 ```
 
 mobBoxes.yml:

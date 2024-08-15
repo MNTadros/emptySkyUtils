@@ -9,6 +9,9 @@ commands:
     description: 'Main command for EmptySkyUtils'
     usage: '/<command> [subcommand] [arguments]'
     aliases: [esu, skyutils]
+  origin:
+    description: 'Open the origin selection menu'
+    usage: '/<command>'
 permissions:
   emptyskyutils.admin:
     description: 'Allows the user to access admin commands'

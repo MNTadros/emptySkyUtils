@@ -1,10 +1,8 @@
 package com.empty.emptyskyutils;
 
+import com.empty.emptyskyutils.commands.originOpen;
 import com.empty.emptyskyutils.commands.skyUtils;
-import com.empty.emptyskyutils.events.enchantShardApplication;
-import com.empty.emptyskyutils.events.mobBoxEntityDeath;
-import com.empty.emptyskyutils.events.mobBoxEvents;
-import com.empty.emptyskyutils.events.shardEntityDeath;
+import com.empty.emptyskyutils.events.*;
 import com.empty.emptyskyutils.items.enchantShard;
 import com.empty.emptyskyutils.items.mobBox;
 import com.empty.emptyskyutils.items.spawnerShard;
@@ -22,6 +20,8 @@ public final class EmptySkyUtils extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        this.getCommand("origin").setExecutor(new originOpen(this));
+        Bukkit.getPluginManager().registerEvents(new originEvents(this), this);
         loadMobBoxConfig();
         this.saveDefaultConfig();
         getConfig().options().copyDefaults(true);
