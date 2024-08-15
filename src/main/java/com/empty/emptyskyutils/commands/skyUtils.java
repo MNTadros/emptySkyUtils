@@ -1,6 +1,7 @@
 package com.empty.emptyskyutils.commands;
 
 import com.empty.emptyskyutils.EmptySkyUtils;
+import com.empty.emptyskyutils.inventories.originSelection;
 import com.empty.emptyskyutils.items.enchantShard;
 import com.empty.emptyskyutils.items.mobBox;
 import org.bukkit.Bukkit;
@@ -17,7 +18,6 @@ public class skyUtils implements CommandExecutor {
         this.plugin = plugin;
     }
 
-    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("emptyskyutils")) {
             return false;
@@ -33,9 +33,22 @@ public class skyUtils implements CommandExecutor {
             sender.sendMessage("§7/esu reload");
             sender.sendMessage("§7/esu giveshards <player> <amount> [type]");
             sender.sendMessage("§7/esu giveboxes <player> <amount> [type]");
+            sender.sendMessage("§7/esu origin");
             sender.sendMessage(" ");
             sender.sendMessage("§bShard types: §7[looting, fortune, sharpness, smite, unbreaking, bane, protection, efficiency]");
             sender.sendMessage("§bBox types: §7[tier1, tier2, tier3, tier4, tier5, tier6, resource, boss]");
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("origin")) {
+            if (!(sender instanceof Player)) {
+                sender.sendMessage("§cOnly players can use this command.");
+                return true;
+            }
+            Player player = (Player) sender;
+            originSelection gui = new originSelection(plugin);
+            ((Player) sender).openInventory(gui.getInventory());
+            player.sendMessage("§6[!] Opening origin selection! [!]");
             return true;
         }
 

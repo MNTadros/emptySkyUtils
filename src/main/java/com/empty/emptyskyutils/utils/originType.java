@@ -2,16 +2,17 @@ package com.empty.emptyskyutils.utils;
 
 public enum originType {
     FARMER("Farmer", new originEffect[] {
-            new originEffect(effectType.PERMANENT_HASTE, 2)
+            new originEffect(effectType.PERMANENT_HASTE, 1)
     }),
     MINER("Miner", new originEffect[] {
-            new originEffect(effectType.MINING_SPEED, 2)
+            new originEffect(effectType.PERMANENT_HASTE, 1)
     }),
     RANCHER("Rancher", new originEffect[] {
-            new originEffect(effectType.PERMANENT_LUCK, 2)
+            new originEffect(effectType.PERMANENT_LUCK, 0),
+            new originEffect(effectType.MINING_SPEED, 1)
     }),
     TRADER("Trader", new originEffect[] {
-            new originEffect(effectType.MINING_SPEED, 2),
+            new originEffect(effectType.MINING_SPEED, 0),
             new originEffect(effectType.PHOENIX,1)
     });
 

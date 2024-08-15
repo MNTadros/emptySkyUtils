@@ -56,9 +56,9 @@ public class originSelection implements InventoryHolder {
         slot1lore.add("§fMaster the art of farming");
         slot1lore.add("§fand reap extra rewards!");
         slot1lore.add("");
-        slot1lore.add("§2► §f§n+20%§f Crop Growth Speed");
         slot1lore.add("§2► §f§n+10%§f Yield from Harvesting");
-        slot1lore.add("§2► §fPermanent Haste 2");
+        slot1lore.add("§2► §fGet §nCropBoxes§f from harvesting crops §e§l§n(ORIGIN EXCLUSIVE)");
+        slot1lore.add("§2► §fPermanent §nHaste 2");
 
         slot1 = createItem("§2§lFarmer Origin", Material.WHEAT, slot1lore);
         origininv.setItem(19, slot1);
@@ -69,8 +69,7 @@ public class originSelection implements InventoryHolder {
         slot2lore.add("§friches buried in the earth!");
         slot2lore.add("");
         slot2lore.add("§b► §f§n+15%§f Chance to find Gems");
-        slot2lore.add("§b► §f§n+10%§f Mining Speed");
-        slot2lore.add("§b► §fExclusive §n/cave warp");
+        slot2lore.add("§b► §fPermanent §nHaste 2");
 
         slot2 = createItem("§b§lMiner Origin", Material.DIAMOND_PICKAXE, slot2lore);
         origininv.setItem(21, slot2);
@@ -80,9 +79,10 @@ public class originSelection implements InventoryHolder {
         slot3lore.add("§fHarness the power of the economy");
         slot3lore.add("§fand dominate the marketplace!");
         slot3lore.add("");
-        slot3lore.add("§e► §f§n+15%§f Sell Price on Goods");
-        slot3lore.add("§e► §f§n-10%§f Buy Price at Shops");
-        slot3lore.add("§e► §fExclusive §n/auction warp");
+        slot3lore.add("§e► §fDrop §nSpawnerShards§f more often");
+        slot3lore.add("§e► §fDrop §nMobBoxes§f more often");
+        slot3lore.add("§e► §fPermanent §nSpeed 1");
+        slot3lore.add("§e► §f§nPhoenix §fAbility");
 
         slot3 = createItem("§e§lTrader Origin", Material.EMERALD, slot3lore);
         origininv.setItem(23, slot3);
@@ -92,9 +92,10 @@ public class originSelection implements InventoryHolder {
         slot4lore.add("§fCollect and breed animals");
         slot4lore.add("§fto enhance your island's growth!");
         slot4lore.add("");
-        slot4lore.add("§d► §f§n+20%§f Animal Breeding Speed");
-        slot4lore.add("§d► §f§n+10%§f Drop Rate from Animals");
-        slot4lore.add("§d► §fPermanent Luck 2");
+        slot4lore.add("§d► §f§n+15%§f Drop rate from Mobs");
+        slot4lore.add("§d► §f§n+15%§f Exp Drop rate");
+        slot4lore.add("§d► §fPermanent §nSpeed 2");
+        slot4lore.add("§d► §fPermanent §nLuck 1");
 
         slot4 = createItem("§d§lRancher Origin", Material.CARROT, slot4lore);
         origininv.setItem(25, slot4);

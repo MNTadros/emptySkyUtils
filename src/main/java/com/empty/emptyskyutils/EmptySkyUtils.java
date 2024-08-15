@@ -1,6 +1,5 @@
 package com.empty.emptyskyutils;
 
-import com.empty.emptyskyutils.commands.originOpen;
 import com.empty.emptyskyutils.commands.skyUtils;
 import com.empty.emptyskyutils.events.*;
 import com.empty.emptyskyutils.items.enchantShard;
@@ -20,7 +19,6 @@ public final class EmptySkyUtils extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.getCommand("origin").setExecutor(new originOpen(this));
         Bukkit.getPluginManager().registerEvents(new originEvents(this), this);
         loadMobBoxConfig();
         this.saveDefaultConfig();

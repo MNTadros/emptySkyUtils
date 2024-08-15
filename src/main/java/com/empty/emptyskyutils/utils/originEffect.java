@@ -33,7 +33,6 @@ public class originEffect {
                 player.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, Integer.MAX_VALUE, (int) modifier, true, false));
                 break;
             case PHOENIX:
-                player.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, Integer.MAX_VALUE, (int) modifier, true, false));
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported effect type: " + type);

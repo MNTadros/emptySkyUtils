@@ -12,9 +12,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -61,7 +61,7 @@ public class originEvents implements Listener {
                     if (!checkPlayerOrigin(player)) {
                         effectHandler.applyOriginEffects(player, selectedOrigin);
                         savePlayerOrigin(player, selectedOrigin);
-                        player.sendMessage("§6[!] You have selected the " + itemName + " [!]");
+                        player.sendMessage("§6[!] You have selected the " + itemName + "§6 [!]");
                     } else {
                         player.sendMessage("§6[!] You have already selected an origin! [!]");
                     }
@@ -149,6 +149,24 @@ public class originEvents implements Listener {
         }
         return (int) obj;
     }
+
+    @EventHandler
+    public void onRespawn(PlayerRespawnEvent event) { //TODO not workin -->
+        Player player = event.getPlayer();
+        String uuid = player.getUniqueId().toString();
+
+        player.sendMessage("§6Player respawn event triggered for UUID: " + uuid + "§6");
+
+        if (playerDataMap.containsKey(uuid)) {
+            playerData data = playerDataMap.get(uuid);
+            originType origin = data.getOrigin();
+            player.sendMessage("§6Reapplying effects for origin: " + origin.name() + "§6");
+            effectHandler.applyOriginEffects(player, origin);
+        } else {
+            player.sendMessage("§cNo origin data found for player with UUID: " + uuid + "§c");
+        }
+    }                                               //TODO not workin <--
+
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
