@@ -16,24 +16,31 @@ import java.io.File;
 public final class EmptySkyUtils extends JavaPlugin {
     private FileConfiguration mobBoxConfig;
     private File mobBoxFile;
+    private originEvents originEvents;
 
     @Override
     public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(new originEvents(this), this);
+        originEvents = new originEvents(this);
+        Bukkit.getPluginManager().registerEvents(originEvents, this);
+
         loadMobBoxConfig();
         this.saveDefaultConfig();
         getConfig().options().copyDefaults(true);
         saveConfig();
+
         spawnerShard.init();
         enchantShard.init();
         mobBox.init();
+
         craftShardsToSpawners craftShardsToSpawners = new craftShardsToSpawners(this);
         craftShardsToSpawners.registerRecipes();
+
         this.getCommand("emptySkyUtils").setExecutor(new skyUtils(this));
         Bukkit.getPluginManager().registerEvents(new mobBoxEntityDeath(this), this);
         Bukkit.getPluginManager().registerEvents(new shardEntityDeath(this), this);
         Bukkit.getPluginManager().registerEvents(new enchantShardApplication(this), this);
         Bukkit.getPluginManager().registerEvents(new mobBoxEvents(this), this);
+
         getServer().getConsoleSender().sendMessage("§l[emptySkyUtils] §6Plugin enabled!");
     }
 
@@ -54,4 +61,7 @@ public final class EmptySkyUtils extends JavaPlugin {
         return mobBoxConfig;
     }
 
+    public originEvents getOriginEvents() {
+        return originEvents;
+    }
 }

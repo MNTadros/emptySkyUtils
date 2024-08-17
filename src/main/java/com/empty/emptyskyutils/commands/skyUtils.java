@@ -1,6 +1,7 @@
 package com.empty.emptyskyutils.commands;
 
 import com.empty.emptyskyutils.EmptySkyUtils;
+import com.empty.emptyskyutils.events.originEvents;
 import com.empty.emptyskyutils.inventories.originSelection;
 import com.empty.emptyskyutils.items.enchantShard;
 import com.empty.emptyskyutils.items.mobBox;
@@ -9,6 +10,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.*;
 
 public class skyUtils implements CommandExecutor {
 
@@ -33,6 +40,7 @@ public class skyUtils implements CommandExecutor {
             sender.sendMessage("§7/esu reload");
             sender.sendMessage("§7/esu giveshards <player> <amount> [type]");
             sender.sendMessage("§7/esu giveboxes <player> <amount> [type]");
+            sender.sendMessage("§7/esu removeorigin <player>");
             sender.sendMessage("§7/esu origin");
             sender.sendMessage(" ");
             sender.sendMessage("§bShard types: §7[looting, fortune, sharpness, smite, unbreaking, bane, protection, efficiency]");
@@ -61,6 +69,15 @@ public class skyUtils implements CommandExecutor {
             plugin.reloadConfig();
             plugin.loadMobBoxConfig();
             sender.sendMessage("§f[§bempty§7SkyUtils§f] Configuration reloaded!");
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("removeorigin")) {
+            if (args.length != 2) {
+                sender.sendMessage("§cUsage: /esu removeorigin <player>");
+                return false;
+            }
+            removePlayerData(sender, args[1]);
             return true;
         }
 
@@ -231,6 +248,60 @@ public class skyUtils implements CommandExecutor {
                 }
             }
             sender.sendMessage("§f[§bempty§7SkyUtils§f] " + amount + " " + type + " box(es) given to " + target.getName() + "!");
+        }
+    }
+
+    private void removePlayerData(CommandSender sender, String playerName) {  // !!!
+        Player target = Bukkit.getPlayer(playerName);
+        if (target == null) {
+            sender.sendMessage("§cPlayer not found.");
+            return;
+        }
+
+        String uuid = target.getUniqueId().toString();
+        File dataFile = new File(plugin.getDataFolder(), "player_data.json");
+
+        if (!dataFile.exists()) {
+            sender.sendMessage("§cPlayer data file does not exist.");
+            return;
+        }
+
+        try {
+            JSONParser parser = new JSONParser();
+            FileReader reader = new FileReader(dataFile);
+            JSONArray playerArray = (JSONArray) parser.parse(reader);
+            reader.close();
+
+            boolean removed = false;
+            JSONArray updatedArray = new JSONArray();
+
+            for (Object obj : playerArray) {
+                JSONObject jsonObject = (JSONObject) obj;
+                String storedUuid = (String) jsonObject.get("uuid");
+                if (!storedUuid.equals(uuid)) {
+                    updatedArray.add(jsonObject);
+                } else {
+                    removed = true;
+                }
+            }
+
+            if (removed) {
+                FileWriter writer = new FileWriter(dataFile);
+                writer.write(updatedArray.toJSONString());
+                writer.close();
+
+                originEvents originEvents = plugin.getOriginEvents();
+                if (originEvents != null) {
+                    originEvents.removePlayerOrigin(target);
+                }
+
+                sender.sendMessage("§f[§bempty§7SkyUtils§f] Player data for " + playerName + " removed, and origin effects cleared.");
+            } else {
+                sender.sendMessage("§cNo data found for player " + playerName + ".");
+            }
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+            sender.sendMessage("§cAn error occurred while removing player data.");
         }
     }
 }

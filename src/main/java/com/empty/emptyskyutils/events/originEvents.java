@@ -8,12 +8,16 @@ import com.empty.emptyskyutils.utils.originType;
 import com.empty.emptyskyutils.utils.playerData;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.json.simple.JSONArray;
@@ -21,7 +25,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +36,7 @@ public class originEvents implements Listener {
     private final EmptySkyUtils plugin;
     private final effectHandler effectHandler;
     private final File dataFile;
-    private Map<String, playerData> playerDataMap;
+    public Map<String, playerData> playerDataMap;
 
     public originEvents(EmptySkyUtils plugin) {
         this.plugin = plugin;
@@ -99,6 +106,14 @@ public class originEvents implements Listener {
         savePlayerData();
     }
 
+    public void removePlayerOrigin(Player player) { // !!!
+        String uuid = player.getUniqueId().toString();
+        if (playerDataMap.containsKey(uuid)) {
+            playerDataMap.remove(uuid);
+            savePlayerData();
+        }
+    }
+
     private Map<String, playerData> loadPlayerData() {
         if (!dataFile.exists()) {
             return new HashMap<>();
@@ -151,7 +166,7 @@ public class originEvents implements Listener {
     }
 
     @EventHandler
-    public void onRespawn(PlayerRespawnEvent event) { //TODO not workin -->
+    public void onRespawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
         String uuid = player.getUniqueId().toString();
 
@@ -160,13 +175,49 @@ public class originEvents implements Listener {
         if (playerDataMap.containsKey(uuid)) {
             playerData data = playerDataMap.get(uuid);
             originType origin = data.getOrigin();
-            player.sendMessage("§6Reapplying effects for origin: " + origin.name() + "§6");
-            effectHandler.applyOriginEffects(player, origin);
+            player.sendMessage("§6Reapplying effects for origin: " + origin + "§6");
+
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                effectHandler.applyOriginEffects(player, origin);
+            }, 1L); // 1 tick delay
         } else {
             player.sendMessage("§cNo origin data found for player with UUID: " + uuid + "§c");
         }
-    }                                               //TODO not workin <--
+    }
 
+    @EventHandler
+    public void onPlayerDrinkMilk(PlayerItemConsumeEvent event) {
+        Player player = event.getPlayer();
+        String uuid = player.getUniqueId().toString();
+
+        if (event.getItem().getType() == Material.MILK_BUCKET) {
+            if (playerDataMap.containsKey(uuid)) {
+                playerData data = playerDataMap.get(uuid);
+                originType origin = data.getOrigin();
+                player.sendMessage("§6Reapplying effects for origin: " + origin + "§6");
+
+                Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                    effectHandler.applyOriginEffects(player, origin);
+                }, 1L);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        String uuid = player.getUniqueId().toString();
+
+        if (playerDataMap.containsKey(uuid)) {
+            playerData data = playerDataMap.get(uuid);
+            originType origin = data.getOrigin();
+            player.sendMessage("§6Reapplying effects for origin: " + origin + "§6");
+
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                effectHandler.applyOriginEffects(player, origin);
+            }, 1L);
+        }
+    }
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
@@ -202,5 +253,4 @@ public class originEvents implements Listener {
             }
         }
     }
-
 }
