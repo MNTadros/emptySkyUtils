@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class effectHandler {
+    private static effectHandler instance;
 
     private final Map<Player, originType> playerOrigins = new HashMap<>();
 
@@ -49,8 +50,16 @@ public class effectHandler {
             case PERMANENT_LUCK:
                 player.removePotionEffect(PotionEffectType.LUCK);
                 break;
+            case PHOENIX:
+                break;
             default:
                 throw new IllegalArgumentException("Unsupported effect type: " + effect.getType());
         }
+    }
+    public static effectHandler getInstance() {
+        if (instance == null) {
+            instance = new effectHandler();
+        }
+        return instance;
     }
 }

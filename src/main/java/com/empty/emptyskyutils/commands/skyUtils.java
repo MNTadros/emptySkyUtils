@@ -5,6 +5,7 @@ import com.empty.emptyskyutils.events.originEvents;
 import com.empty.emptyskyutils.inventories.originSelection;
 import com.empty.emptyskyutils.items.enchantShard;
 import com.empty.emptyskyutils.items.mobBox;
+import com.empty.emptyskyutils.utils.effectHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -251,7 +252,7 @@ public class skyUtils implements CommandExecutor {
         }
     }
 
-    private void removePlayerData(CommandSender sender, String playerName) {  // !!!
+    private void removePlayerData(CommandSender sender, String playerName) {
         Player target = Bukkit.getPlayer(playerName);
         if (target == null) {
             sender.sendMessage("§cPlayer not found.");
@@ -289,6 +290,8 @@ public class skyUtils implements CommandExecutor {
                 FileWriter writer = new FileWriter(dataFile);
                 writer.write(updatedArray.toJSONString());
                 writer.close();
+
+                effectHandler.getInstance().removeOriginEffects(target);
 
                 originEvents originEvents = plugin.getOriginEvents();
                 if (originEvents != null) {
