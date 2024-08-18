@@ -80,6 +80,11 @@ public class originEvents implements Listener {
         }
     }
 
+    public originType getPlayerOrigin(String uuid) {
+        playerData data = playerDataMap.get(uuid);
+        return data != null ? data.getOrigin() : null;
+    }
+
     private originType getSelectedOrigin(String itemName) {
         switch (itemName) {
             case "§2§lFarmer Origin":

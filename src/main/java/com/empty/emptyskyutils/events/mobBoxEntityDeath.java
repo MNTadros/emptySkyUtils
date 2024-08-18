@@ -4,6 +4,7 @@ import com.empty.emptyskyutils.EmptySkyUtils;
 import com.empty.emptyskyutils.items.mobBox;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,45 +27,66 @@ public class mobBoxEntityDeath implements Listener {
     }
 
     @EventHandler
-    public void onDeath(EntityDeathEvent e) {
+    public void onDeath(EntityDeathEvent event) {
         if (!getConfigBoolean("mobBoxes", true)) {
+            logger.info("Mob boxes are disabled in the config.");
             return;
         }
 
-        EntityType entityType = e.getEntityType();
-        Entity killerEntity = e.getEntity().getKiller();
+        Entity entity = event.getEntity();
+        if (!(entity instanceof LivingEntity)) {
+            logger.warning("Entity is not a LivingEntity. No mob box given.");
+            return;
+        }
 
-        if (killerEntity instanceof Player) {
-            Player player = (Player) killerEntity;
+        LivingEntity livingEntity = (LivingEntity) entity;
+        Player killer = (livingEntity.getKiller() instanceof Player) ? (Player) livingEntity.getKiller() : null;
 
-            String tier = getMobBoxTier(entityType);
-            if (tier == null) {
-//                logger.info("No mob box configuration found for entity " + entityType.name());
-                return;
-            }
+        if (killer == null) {
+            logger.warning("Killer entity is not a player. No mob box given.");
+            return;
+        }
 
-            if (!getConfigBoolean("mobBoxDrops." + tier + ".enabled", false)) {
-                return;
-            }
+        logger.info("Player " + killer.getName() + " killed a " + entity.getType().name());
 
-            double dropChance = getConfigDouble("mobBoxDrops." + tier + ".chance", 0.0);
-            if (new Random().nextDouble() <= dropChance) {
-                ItemStack mobBoxItem = getMobBoxItem(tier);
+        String tier = getMobBoxTier(entity.getType());
+        if (tier == null) {
+            logger.info("No mob box configuration found for entity " + entity.getType().name());
+            return;
+        }
 
-                if (mobBoxItem != null) {
-                    player.getInventory().addItem(mobBoxItem);
+        if (!getConfigBoolean("mobBoxDrops." + tier + ".enabled", true)) {
+            logger.info("Mob box drops for tier " + tier + " are disabled.");
+            return;
+        }
 
-                    if (getConfigBoolean("sendMobBoxMessage", false)) {
-                        player.sendMessage("§f§l[§bempty§7SkyUtils§f§l] You have received a " + entityType.name() + " Mob Box!");
-                    }
+        double dropChance = getConfigDouble("mobBoxDrops." + tier + ".chance", 0.0);
+        logger.info("Drop chance for " + entity.getType().name() + " (Tier " + tier + "): " + dropChance);
+
+        if (new Random().nextDouble() <= dropChance) {
+            ItemStack mobBoxItem = getMobBoxItem(tier);
+
+            if (mobBoxItem != null) {
+                killer.getInventory().addItem(mobBoxItem);
+                logger.info("Player " + killer.getName() + " received a " + tier + " Mob Box.");
+
+                if (getConfigBoolean("sendMobBoxMessage", false)) {
+                    killer.sendMessage("§f§l[§bempty§7SkyUtils§f§l] You have received a " + entity.getType().name() + " Mob Box!");
                 }
+            } else {
+                logger.warning("No mob box item found for tier " + tier);
             }
+        } else {
+            logger.info("No mob box dropped for " + entity.getType().name() + ". Chance check failed.");
         }
     }
 
     private String getMobBoxTier(EntityType entityType) {
         ConfigurationSection section = plugin.getMobBoxConfig().getConfigurationSection("mobBoxDrops");
-        if (section == null) return null;
+        if (section == null) {
+            logger.warning("No mobBoxDrops section found in the config.");
+            return null;
+        }
 
         for (String tier : section.getKeys(false)) {
             ConfigurationSection tierSection = section.getConfigurationSection(tier);
