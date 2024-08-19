@@ -1,12 +1,12 @@
 package com.empty.emptyskyutils.utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 import java.util.HashMap;
 import java.util.Map;
 
 public class effectHandler {
-    private static effectHandler instance;
 
     private final Map<Player, originType> playerOrigins = new HashMap<>();
 
@@ -40,26 +40,34 @@ public class effectHandler {
     }
 
     private void removeEffect(Player player, originEffect effect) {
+        Bukkit.getLogger().info("Removing effect: " + effect.getType() + " for player: " + player.getName());
+
         switch (effect.getType()) {
             case PERMANENT_HASTE:
-                player.removePotionEffect(PotionEffectType.HASTE);
+                if (player.hasPotionEffect(PotionEffectType.HASTE)) {
+                    player.removePotionEffect(PotionEffectType.HASTE);
+                    Bukkit.getLogger().info("Removed HASTE effect.");
+                }
                 break;
             case MINING_SPEED:
-                player.removePotionEffect(PotionEffectType.SPEED);
+                if (player.hasPotionEffect(PotionEffectType.SPEED)) {
+                    player.removePotionEffect(PotionEffectType.SPEED);
+                    Bukkit.getLogger().info("Removed SPEED effect.");
+                }
                 break;
             case PERMANENT_LUCK:
-                player.removePotionEffect(PotionEffectType.LUCK);
+                if (player.hasPotionEffect(PotionEffectType.LUCK)) {
+                    player.removePotionEffect(PotionEffectType.LUCK);
+                    Bukkit.getLogger().info("Removed LUCK effect.");
+                }
                 break;
             case PHOENIX:
+                // Handle PHOENIX effect if necessary
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported effect type: " + effect.getType());
         }
     }
-    public static effectHandler getInstance() {
-        if (instance == null) {
-            instance = new effectHandler();
-        }
-        return instance;
-    }
+
+
 }

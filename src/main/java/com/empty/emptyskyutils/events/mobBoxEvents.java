@@ -52,7 +52,6 @@ public class mobBoxEvents implements Listener {
         if (isMobBox(itemInHand)) {
             event.setCancelled(true);
             event.getPlayer().sendMessage("§f§l[§bempty§7SkyUtils§f§l] You can't place a MobBox!");
-//            logger.info("Attempted to place a Mob Box and it was cancelled.");
             event.getPlayer().getInventory().setItemInMainHand(itemInHand);
             plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                 event.getPlayer().updateInventory();
