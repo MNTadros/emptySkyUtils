@@ -16,7 +16,7 @@ This plugin was made for the purpose of a skyblock server where you get rewarded
 The current installation method is a little scuffed (will be fixed in the future) but all previous and future plugin versions will be put in the plugin_jar folder.
 
 ```bash
-Current version: 1.0
+Current version: 1.1
 ```
 
 ## Showcase
